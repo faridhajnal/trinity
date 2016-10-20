@@ -1,0 +1,132 @@
+body {
+    background-color: #ECF0F5;
+}
+
+.extra-padding-top {
+    padding-top: 55px;
+}
+
+.products-list .product-img {
+    padding: 10px;
+}
+
+.products-list .product-img img {
+    width: 20px;
+    height: 20px;
+}
+
+.user-block {
+    padding: 10px;
+}
+
+.user-block img {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* The starting CSS styles for the enter animation */
+
+.ng-enter {
+    -webkit-transition: 0.3s linear all 0.4s;
+    transition: 0.3s linear all 0.4s;
+    opacity: 0;
+}
+
+
+/* The finishing CSS styles for the enter animation */
+
+.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+
+/* now the element will fade out before it is removed from the DOM */
+
+.ng-leave {
+    -webkit-transition: 0.3s ease-in-out all;
+    transition: 0.3s ease-in-out all;
+    opacity: 1;
+}
+
+.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+
+/*
+.ng-enter {
+    -webkit-animation: slideInRight 0.5s both ease-in 0.5s;
+    animation: slideInRight 0.5s both ease-in 0.5s;
+}
+
+.ng-leave {
+    -webkit-animation: slideOutLeft 0.5s both ease-in;
+    animation: slideOutLeft 0.5s both ease-in;
+}
+*/
+
+
+/* slide out to the left */
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.fixed-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.ptr-float {
+    cursor: pointer;
+}
+
+@-webkit-keyframes slideOutLeft {
+    to {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutLeft {
+    to {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+
+/* slide in from the right */
+
+@-webkit-keyframes slideInRight {
+    from {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
