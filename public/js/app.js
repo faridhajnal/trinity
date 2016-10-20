@@ -12,12 +12,20 @@ config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/view1', {
         templateUrl: 'views/sessions.html'
         , controller: 'SessionCtrl'
-    });
-    $routeProvider.when('/view2', {
+    })
+    .when('/view1/:caseId', {
+        templateUrl: 'views/sessions.html'
+        , controller: 'SessionCtrl'
+    })
+    .when('/view1/:caseId/:lineId', {
+        templateUrl: 'views/sessions.html'
+        , controller: 'SessionCtrl'
+    })
+    .when('/view2', {
         templateUrl: 'views/admin-main.html'
         , controller: 'AdminCtrl'
-    });
-    $routeProvider.otherwise({
+    })
+    .otherwise({
         redirectTo: '/view1'
     });
 }]);

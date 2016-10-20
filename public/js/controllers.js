@@ -231,9 +231,18 @@ controller('mainCtrl', ['$scope', 'GlobalScopes', 'SessionService', function ($s
     GlobalScopes.store('Analists', $scope.analists);
     SessionService.store($scope.sessions);
 }]).
-controller('SessionCtrl', ['$scope', 'GlobalScopes', 'SessionService', function ($scope, GlobalScopes, SessionService) {
+controller('SessionCtrl', ['$scope', 'GlobalScopes', 'SessionService', '$routeParams', function ($scope, GlobalScopes, SessionService, $routeParams) {
     $scope.analists = GlobalScopes.get('Analists');
     $scope.sessions = SessionService.get();
+    
+    $scope.showcase = function(){
+        console.log('Case', $routeParams.caseId);
+    }
+    
+    $scope.showline = function(){
+        console.log('Case', $routeParams.caseId);
+        console.log('Line', $routeParams.lineId);
+    }
 }]).
 controller('AdminCtrl', ['$scope', 'GlobalScopes', 'SessionService', function ($scope, GlobalScopes, SessionService) {
     $scope.analists = GlobalScopes.get('Analists');
