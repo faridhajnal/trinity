@@ -1,0 +1,57 @@
+[
+        {
+            "caso": "Caso 1",
+            "id" : 1,
+            "lineas" : [
+                {
+                    "nombre" : "telcel 1",
+                    "id" : 1
+                },
+                
+                {
+                    "nombre" : "telcel 2",
+                    "id" : 2
+                },
+                
+                {
+                    "nombre" : "iusacell 1",
+                    "id" : 3
+                }
+            ]
+            
+        },
+        
+        {
+            "caso": "Caso 2",
+            "id" : 2,
+            "lineas" : [
+                {
+                    "nombre" : "iusacell 1",
+                    "id" : 4
+                },
+                
+                {
+                    "nombre" : "nextel 1",
+                    "id" : 5
+                }
+            ]
+            
+        },
+    
+        {
+            "caso": "Caso 3",
+            "id" : 3,
+            "lineas" : [
+                {
+                    "nombre" : "pelito",
+                    "id" : 6
+                },
+                
+                {
+                    "nombre" : "sin delito",
+                    "id" : 7
+                }
+            ]
+            
+        }
+]

@@ -1,7 +1,36 @@
 'use strict';
 /* Controllers */
 angular.module('trnApp.controllers', []).
-controller('mainCtrl', ['$scope', 'GlobalScopes', 'SessionService', function ($scope, GlobalScopes, SessionService) {
+controller('mainCtrl', ['$scope', 'GlobalScopes', 'SessionService', '$location', '$http', 
+                        function ($scope, GlobalScopes, SessionService, $location, $http) {
+    
+    $scope.openCase = function(caso, event){
+        
+        event.preventDefault();
+        $location.path('/view1/'+ caso.id); 
+        console.log("sexo");
+        
+    }
+    
+    $scope.openLine = function(casoid, lineid, event){
+        event.preventDefault();
+        $scope.activeLine = lineid;
+        $location.path('/view1/'+ casoid +"/" + lineid); 
+        console.log('line', lineid);
+        console.log('caso', casoid);
+    }
+    
+    $http({
+        method: 'GET',
+        url: 'cases'
+    }).then(function(result){
+       $scope.tree = result.data;
+       console.log(result.data); 
+    }).catch(function(error){
+        console.log(error);
+    });
+    
+    
     $scope.analists = [
         {
             name: 'Analista 1'
@@ -230,19 +259,31 @@ controller('mainCtrl', ['$scope', 'GlobalScopes', 'SessionService', function ($s
 	}];
     GlobalScopes.store('Analists', $scope.analists);
     SessionService.store($scope.sessions);
+    
+    //console.log($scope.tree);
 }]).
 controller('SessionCtrl', ['$scope', 'GlobalScopes', 'SessionService', '$routeParams', function ($scope, GlobalScopes, SessionService, $routeParams) {
     $scope.analists = GlobalScopes.get('Analists');
     $scope.sessions = SessionService.get();
     
-    $scope.showcase = function(){
-        console.log('Case', $routeParams.caseId);
-    }
+    $scope.current_case = $routeParams.caseId;
+    $scope.current_line = $routeParams.lineId;
     
-    $scope.showline = function(){
-        console.log('Case', $routeParams.caseId);
-        console.log('Line', $routeParams.lineId);
+    if($scope.current_line === undefined){
+        if($scope.current_case === undefined){
+        $scope.title = "Todo";
+        }
+        else{
+        $scope.title = "Caso ID: " + $scope.current_case;
+        }
     }
+    else{
+    $scope.title = "Linea ID: " + $scope.current_line + "(Caso " + $scope.current_case + ")";
+    }
+
+   
+    
+    
 }]).
 controller('AdminCtrl', ['$scope', 'GlobalScopes', 'SessionService', function ($scope, GlobalScopes, SessionService) {
     $scope.analists = GlobalScopes.get('Analists');

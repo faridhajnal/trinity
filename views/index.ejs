@@ -17,13 +17,27 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="bowerlib/AdminLTE/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="bowerlib/AdminLTE/dist/css/skins/_all-skins.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href=" /img/fav/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href=" /img/fav/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href=" /img/fav/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href=" /img/fav/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href=" /img/fav/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href=" /img/fav/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href=" /img/fav/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href=" /img/fav/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href=" /img/fav/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href=" /img/fav/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href=" /img/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href=" /img/fav/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href=" /img/fav/favicon-16x16.png">
     <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
     <link rel="stylesheet" href="css/app.css" /> </head>
 
-<body class="hold-transition skin-red sidebar-mini sidebar-collapse" ng-controller="mainCtrl">
+<body class="hold-transition skin-red sidebar-mini" ng-controller="mainCtrl">
     <!--<ul class="menu">
         <li><a href="#/view1">view1</a></li>
         <li><a href="#/view2">view2</a></li>
@@ -115,25 +129,15 @@
                     <a href="#/view1"> <i class="fa fa-headphones"></i> <span>Monitoreo</span> <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span> </a>
-                    <ul class="treeview-menu">
-                        <li> <a href="#/view1/1"><i class="fa fa-folder"></i> Caso 1
-                <span class="pull-right-container">
+                    
+                    <ul class="treeview-menu" ng-repeat="cases in tree">
+                        <li> <a ng-click="openCase(cases, $event)"><i class="fa fa-folder"></i> {{cases.caso}}
+                <span    class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#/view1/1/15"><i class="fa fa-circle-o"></i> Linea 1</a></li>
-                                <li><a href="#/view1/1/23"><i class="fa fa-circle-o"></i> Linea 2</a></li>
-                                <li><a href="#/view1/1/32"><i class="fa fa-circle-o"></i> Linea 3</a></li>
-                            </ul>
-                        </li>
-                        <li> <a href="#/view1/2"><i class="fa fa-folder"></i> Caso 2
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#/view1/2/66"><i class="fa fa-circle-o"></i> Linea 1</a></li>
+                            <ul class="treeview-menu" ng-repeat="line in cases.lineas">
+                                <li><a ng-class="{activeline : activeLine === line.id }" ng-click="openLine(cases.id,line.id,$event)"><i class="fa fa-circle-o"></i> {{line.nombre}}</a></li>
                             </ul>
                         </li>
                     </ul>
